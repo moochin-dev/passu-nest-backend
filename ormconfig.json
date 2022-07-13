@@ -1,0 +1,17 @@
+{
+  "type": "mysql",
+  "host": "ls-ec3cf2622c477164fd649319d251bcffbc0f7ab7.cjq3ivmixgfe.ap-northeast-2.rds.amazonaws.com",
+  "port": 3306,
+  "username": "dbmasteruser",
+  "password": "!antmd5228^",
+  "database": "nestbackend",
+  "synchronize": true,
+  "entities": ["dist/entity/**/*.js"],
+  "subscribers": ["dist/subscriber/**/*.js"],
+  "migrations": ["dist/migration/**/*.js"],
+  "cli": {
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}

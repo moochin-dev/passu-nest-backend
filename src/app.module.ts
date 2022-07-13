@@ -2,11 +2,14 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WaterbrandModule } from './waterbrand/waterbrand.module';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { WaterBrand } from './waterbrand/entities/waterbrand.entity';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: true,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      typePaths: ['./**/*.graphql'],
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -15,11 +18,11 @@ import { WaterbrandModule } from './waterbrand/waterbrand.module';
       username: 'dbmasteruser',
       password: '!antmd5228^',
       database: 'nestbackend',
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
+      logging: true,
     }),
     WaterbrandModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}

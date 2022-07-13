@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
-import { WaterbrandResolver } from './waterbrand.resolver';
+import { WaterBrandResolver } from './waterbrand.resolver';
+import { WaterbrandService } from './waterbrand.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { WaterBrand } from './entities/waterbrand.entity';
 
 @Module({
-  providers: [WaterbrandResolver]
+  imports: [TypeOrmModule.forFeature([WaterBrand])],
+  providers: [WaterBrandResolver, WaterbrandService]
 })
 export class WaterbrandModule {}

@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WaterbrandResolver } from './waterbrand.resolver';
+import { WaterBrandResolver } from './waterbrand.resolver';
 
-describe('WaterbrandResolver', () => {
-  let resolver: WaterbrandResolver;
+describe('WaterBrandResolver', () => {
+  let resolver: WaterBrandResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WaterbrandResolver],
+      providers: [WaterBrandResolver],
     }).compile();
 
-    resolver = module.get<WaterbrandResolver>(WaterbrandResolver);
+    resolver = module.get<WaterBrandResolver>(WaterBrandResolver);
   });
 
   it('should be defined', () => {
