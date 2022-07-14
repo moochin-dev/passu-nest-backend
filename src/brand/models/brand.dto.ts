@@ -15,7 +15,7 @@ export class BrandDto {
   purchase_link: string;
 
   @Field()
-  company: string;
+  company: string; //test
 
   @Field((type) => Int)
   price: number;
