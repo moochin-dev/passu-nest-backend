@@ -1,13 +1,23 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  RelationId,
+} from 'typeorm';
+import { SourceEntity } from './source.entity';
 
 @Entity('testHistory')
-export class TestHistory extends BaseEntity {
+export class TestHistoryEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   date: Date;
 
-  @Column()
-  source_id: number;
+  @RelationId((testHistory: TestHistoryEntity) => testHistory.source)
+  sourceId: number;
+  @ManyToOne(() => SourceEntity, (source) => source.id)
+  source: SourceEntity;
 }

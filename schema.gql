@@ -2,37 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type BrandDto {
-  id: Int!
-  name: String!
-  image_url: String!
-  purchase_link: String!
-  company: String!
-  price: Int!
-}
-
-type SourceDto {
-  id: Int!
-  name: String!
-  address: String!
-}
-
 type Query {
-  getBrands: [BrandDto!]!
-  getSources: [SourceDto!]!
-  getOneSource(id: Float!): SourceDto!
-  getSourceByBrandId(id: Float!): SourceDto!
-}
-
-type Mutation {
-  createBrand(data: InputBrand!): BrandDto!
-}
-
-input InputBrand {
-  id: Int!
-  name: String!
-  image_url: String!
-  purchase_link: String!
-  company: String!
-  price: Int!
+  getAllBrands: Boolean!
 }

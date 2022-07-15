@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('brandSourceMapping')
-export class BrandSourceMapping extends BaseEntity {
+export class BrandSourceMappingEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

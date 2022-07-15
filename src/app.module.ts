@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
-import { BrandModule } from './brand/brand.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeormConfig } from './configs/typeorm.config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { SourceModule } from './source/source.module';
-import { MappingModule } from './mapping/mapping.module';
+import { GetInfoModule } from './get-info/get-info.module';
 
 @Module({
   imports: [
@@ -14,9 +12,7 @@ import { MappingModule } from './mapping/mapping.module';
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
     }),
-    BrandModule,
-    SourceModule,
-    MappingModule,
+    GetInfoModule,
   ],
   controllers: [],
   providers: [],

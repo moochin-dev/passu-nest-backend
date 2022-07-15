@@ -1,7 +1,14 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { TestHistoryEntity } from './testHistory.entity';
 
 @Entity('source')
-export class Source extends BaseEntity {
+export class SourceEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -10,4 +17,7 @@ export class Source extends BaseEntity {
 
   @Column()
   address: string;
+
+  @OneToMany(() => TestHistoryEntity, (test) => test.source)
+  tests: TestHistoryEntity[];
 }

@@ -1,7 +1,15 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { SourceEntity } from './source.entity';
 
 @Entity('brand')
-export class Brand extends BaseEntity {
+export class BrandEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,6 +24,15 @@ export class Brand extends BaseEntity {
 
   @Column()
   company: string;
+
+  @Column()
+  released_date: Date;
+
+  @ManyToMany(() => SourceEntity)
+  @JoinTable({
+    name: 'brandSourceMapping',
+  })
+  sources: SourceEntity[];
 
   @Column()
   price: number;
