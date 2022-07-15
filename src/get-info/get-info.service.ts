@@ -29,10 +29,16 @@ export class GetInfoService {
       let cntForPassed = 0;
       rtList.push({});
       rtList[i] = Object.assign(rtList[i], putList[i]);
+      rtList[i].sources = rtList[i].sources.map((entity) => {
+        return { ...entity };
+      });
       for (const source of rtList[i].sources) {
         source.invalidCount = source.tests.length;
         cntForPassed += source.tests.length;
-        console.log(source);
+        source.tests = source.tests.map((test) => {
+          return { ...test };
+        });
+        // console.log(source);
       }
       if (cntForPassed > 0) {
         rtList[i].passed = false;
@@ -40,35 +46,6 @@ export class GetInfoService {
         rtList[i].passed = true;
       }
     }
-
     return rtList;
-
-    // const rtList2 = rtList.map(async (item) => {
-    //   return {
-    //     ...item,
-    //     source: {
-    //       ...(await this.findSourceByBrandId(item.id)),
-    //       invalidCount: 0,
-    //     },
-    //     passed: true,
-    //   };
-    // });
-    //
-    // for (const item of rtList2) {
-    //   console.log();
-    //   const itemSourceID: number = item.source.id;
-    //
-    //   const count: number = await this.testHistoryRepository.countBy({
-    //     source_id: itemSourceID,
-    //   });
-    //   item.source.invalidCount = count;
-    //   if (count > 0) {
-    //     item.passed = false;
-    //   } else {
-    //     item.passed = true;
-    //   }
-    // }
-    //
-    // return rtList2;
   }
 }

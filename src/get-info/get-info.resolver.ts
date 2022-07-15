@@ -1,13 +1,13 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { GetInfoService } from './get-info.service';
+import { BrandOutDto } from './dtos/brandout.dto';
 
 @Resolver('GetInfo')
 export class GetInfoResolver {
   constructor(private getInfoService: GetInfoService) {}
 
-  @Query(() => Boolean)
+  @Query(() => [BrandOutDto])
   async getAllBrands() {
-    await this.getInfoService.createOutputBrandList();
-    return true;
+    return await this.getInfoService.createOutputBrandList();
   }
 }

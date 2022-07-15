@@ -23,23 +23,35 @@ export class BrandOutDto {
   @Field((type) => Int)
   price: number;
 
-  @Field()
-  sources: sourceInDto[];
+  @Field(() => [sourceObject])
+  sources: sourceObject[];
 
   @Field()
   passed: boolean;
 }
-
-class sourceInDto {
+@ObjectType()
+export class sourceObject {
+  @Field(() => Int)
   id: number;
+
+  @Field()
   name: string;
-  address: string;
-  tests: testInDto[];
+
+  @Field(() => [testObject])
+  tests: testObject[];
+
+  @Field(() => Int)
   invalidCount: number;
 }
 
-class testInDto {
+@ObjectType()
+export class testObject {
+  @Field()
   id: number;
+
+  @Field()
   date: Date;
+
+  @Field()
   sourceId: number;
 }

@@ -2,6 +2,36 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type BrandOutDto {
+  id: Int!
+  name: String!
+  image_url: String!
+  purchase_link: String!
+  company: String!
+  released_date: DateTime!
+  price: Int!
+  sources: [sourceObject!]!
+  passed: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type sourceObject {
+  id: Int!
+  name: String!
+  tests: [testObject!]!
+  invalidCount: Int!
+}
+
+type testObject {
+  id: Float!
+  date: DateTime!
+  sourceId: Float!
+}
+
 type Query {
-  getAllBrands: Boolean!
+  getAllBrands: [BrandOutDto!]!
 }
