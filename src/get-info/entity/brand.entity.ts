@@ -36,6 +36,10 @@ export class Brand extends BaseEntity {
   @Field()
   released_date: Date;
 
+  @Column()
+  @Field()
+  price: number;
+
   @ManyToMany(() => Source)
   @JoinTable({
     name: 'brandSourceMapping',
@@ -43,7 +47,6 @@ export class Brand extends BaseEntity {
   @Field(() => [Source])
   sources: Source[];
 
-  @Column()
   @Field()
-  price: number;
+  passed: boolean;
 }

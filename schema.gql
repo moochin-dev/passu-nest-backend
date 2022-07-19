@@ -18,33 +18,22 @@ type Source {
   name: String!
   address: String!
   tests: [TestHistory!]!
+  invalidCount: Int!
 }
 
-type BrandOutput {
+type Brand {
   id: Int!
   name: String!
   image_url: String!
   purchase_link: String!
   company: String!
   released_date: DateTime!
-  price: Int!
-  sources: [sourceObject!]!
+  price: Float!
+  sources: [Source!]!
   passed: Boolean!
 }
 
-type sourceObject {
-  id: Int!
-  name: String!
-  tests: [testObject!]!
-  invalidCount: Int!
-}
-
-type testObject {
-  id: Float!
-  date: DateTime!
-  sourceId: Float!
-}
-
 type Query {
-  getAllBrands: [BrandOutput!]!
+  getAllBrands: [Brand!]!
+  getOneBrand(id: Float!): Brand!
 }

@@ -26,4 +26,7 @@ export class Source extends BaseEntity {
   @OneToMany(() => TestHistory, (test) => test.source)
   @Field(() => [TestHistory])
   tests: TestHistory[];
+
+  @Field(() => Int)
+  invalidCount: number;
 }
