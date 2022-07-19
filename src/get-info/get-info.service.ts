@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { BrandEntity } from '../entities/brand.entity';
 import { Repository } from 'typeorm';
 import { SourceEntity } from '../entities/source.entity';
-// import { BrandSourceMappingEntity } from '../../brandSourceMapping.entity';
 import { TestHistoryEntity } from '../entities/testHistory.entity';
 
 @Injectable()
