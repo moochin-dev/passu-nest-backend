@@ -2,7 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type BrandOutDto {
+type TestHistory {
+  id: Float!
+  date: DateTime!
+  source: Source!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Source {
+  id: Int!
+  name: String!
+  address: String!
+  tests: [TestHistory!]!
+}
+
+type BrandOutput {
   id: Int!
   name: String!
   image_url: String!
@@ -13,11 +31,6 @@ type BrandOutDto {
   sources: [sourceObject!]!
   passed: Boolean!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type sourceObject {
   id: Int!
@@ -33,5 +46,5 @@ type testObject {
 }
 
 type Query {
-  getAllBrands: [BrandOutDto!]!
+  getAllBrands: [BrandOutput!]!
 }

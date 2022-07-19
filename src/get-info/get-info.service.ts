@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BrandEntity } from '../entities/brand.entity';
+import { Brand } from './entity/brand.entity';
 import { Repository } from 'typeorm';
-import { SourceEntity } from '../entities/source.entity';
-import { TestHistoryEntity } from '../entities/testHistory.entity';
+import { Source } from './entity/source.entity';
+import { TestHistory } from './entity/testHistory.entity';
 
 @Injectable()
 export class GetInfoService {
   constructor(
-    @InjectRepository(BrandEntity)
-    private readonly brandRepository: Repository<BrandEntity>,
-    @InjectRepository(SourceEntity)
-    private readonly sourceRepository: Repository<SourceEntity>,
-    @InjectRepository(TestHistoryEntity)
-    private readonly testHistoryRepository: Repository<TestHistoryEntity>,
+    @InjectRepository(Brand)
+    private readonly brandRepository: Repository<Brand>,
+    @InjectRepository(Source)
+    private readonly sourceRepository: Repository<Source>,
+    @InjectRepository(TestHistory)
+    private readonly testHistoryRepository: Repository<TestHistory>,
   ) {}
 
   async createOutputBrandList() {
